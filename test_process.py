@@ -14,4 +14,16 @@ from process import process
 )
 def test_statement_coverage(case_id, values, expected):
     assert process(values) == expected
-    
+
+# 2. Cobertura de decisiones / ramas (Branch Coverage)
+@pytest.mark.branch
+@pytest.mark.parametrize(
+    "case_id, values, expected",
+    [
+        ("CP-D1", [2], ["positivo", "par"]),
+        ("CP-D2", [-1], []),
+        ("CP-D3", [], []),
+    ],
+)
+def test_branch_coverage(case_id, values, expected):
+    assert process(values) == expected
